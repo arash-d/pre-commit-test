@@ -24,7 +24,6 @@ repos:
         args: [
           '--template', '[#{}]',
           '--pattern', '^(\d+)-',
-          '--default', 'NOISSUE'
         ]
 
 -   repo: local
