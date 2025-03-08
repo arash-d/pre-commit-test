@@ -631,7 +631,5 @@ FodyWeavers.xsd
 ### VisualStudio Patch ###
 # Additional files built by Visual Studio
 
-### Pre commit
-.pre-commit-config.yaml
 
 # End of https://www.toptal.com/developers/gitignore/api/python,macos,linux,visualstudio,venv
