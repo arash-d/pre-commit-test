@@ -1,0 +1,37 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+    -   id: check-yaml
+    -   id: end-of-file-fixer
+    -   id: trailing-whitespace
+- repo: https://github.com/astral-sh/ruff-pre-commit
+  rev: v0.9.10
+  hooks:
+    - id: ruff
+      args: [ --config=pyproject.toml ]
+      pass_filenames: false
+    - id: ruff-format
+-   repo: https://github.com/psf/black
+    rev: 22.10.0
+    hooks:
+    -   id: black
+        language_version: python3.11
+-   repo: https://github.com/avilaton/add-msg-issue-prefix-hook
+    rev: v0.0.8
+    hooks:
+    -   id: add-msg-issue-prefix
+        args: [
+          '--template', '[#{}]',
+          '--pattern', '^(\d+)-',
+          '--default', 'NOISSUE'
+        ]
+
+-   repo: local
+    hooks:
+    -   id: enforce-commit-format
+        name: Enforce Commit Message Format
+        entry: bash .git/hooks/validate-commit-msg.sh
+        language: system
+        stages: [commit-msg]
+
