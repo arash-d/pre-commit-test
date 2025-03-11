@@ -32,7 +32,7 @@ jobs:
         run: |
           cd project-shared
           uv build
-          uv pip install ../dist/project_shared-0.1.0-py3-none-any.whl
+          uv pip install dist/project_shared-0.1.0-py3-none-any.whl
           uv pip install -e .
 
       - name: Run Ruff Linter
