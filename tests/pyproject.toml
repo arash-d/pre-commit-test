@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "project_shared"
+version = "0.0.1"
+description = "Project Shared Libraries"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+    {name = "Arash", email = "foo@mail.com"},
+]
+keywords = ["template", "shared"]
+
+[project.urls]
+source = "https://github.com/arash-d/pre-commit-test/"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = ["project_shared"]
+
+[tool.pytest.ini_options]
+python_files = ["test_*.py"]
+addopts = "-vv --durations=0 --cache-clear -r a -p no:pastebin -p no:nose -p no:doctest -W ignore::DeprecationWarning"

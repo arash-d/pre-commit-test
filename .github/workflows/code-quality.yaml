@@ -1,0 +1,48 @@
+name: Code Quality & Tests
+
+on:
+  push:
+    branches:
+      - "**"  # Runs on all branches when committing
+  pull_request:
+    branches:
+      - main  # Run checks before merging to main
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install Dependencies with uv
+        run: |
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          uv venv .venv
+          source .venv/bin/activate
+          uv pip install ruff black pytest
+
+      - name: Build project-shared
+        run: |
+          cd project-shared
+          uv build
+          uv pip install dist/project_shared-0.1.0-py3-none-any.whl
+          uv pip install -e .
+
+      - name: Run Ruff Linter
+        run: uv run ruff check .
+
+      - name: Run Black Formatter Check
+        run: uv run black --check .
+
+      - name: Run Tests with Time Measurement
+        run: |
+          source .venv/bin/activate
+          time pytest tests/ -vv --durations=0 --cache-clear -r a \
+          -p no:pastebin -p no:nose -p no:doctest -W ignore::DeprecationWarning
