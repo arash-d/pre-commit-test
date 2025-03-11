@@ -29,10 +29,10 @@ jobs:
           uv pip install ruff black pytest
 
       - name: Run Ruff Linter
-        run: uv pip ruff check .
+        run: uv run ruff check .
 
       - name: Run Black Formatter Check
-        run: uv pip black --check .
+        run: uv run black --check .
 
       - name: Run Tests with Time Measurement
         run: |
