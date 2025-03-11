@@ -1,7 +1,3 @@
-def main():
-    return "hello world!"
+from project_shared.helper.util import hello
 
-
-if __name__ == "__main__":
-    out = main()
-    print(out)
+print(hello())
