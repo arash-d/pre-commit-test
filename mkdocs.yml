@@ -63,3 +63,5 @@ extra:
       link: https://github.com/arash-d
 
 copyright: Copyright &copy; 2025 Arash
+
+docs_dir: docs
