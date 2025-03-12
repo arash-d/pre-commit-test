@@ -4,10 +4,10 @@ title: "Feature"
 labels: ["enhancement"]
 body:
   - type: textarea
-    id: what-happened
+    id: what-needed
     attributes:
-      label: What happened?
-      description: Also tell us, what did you expect to happen?
+      label: What needed?
+      description: Also tell us, what do you expect?
       placeholder: Tell us what you need!
       value: "A feature needed!"
     validations:
