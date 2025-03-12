@@ -28,4 +28,4 @@ jobs:
       - run: |
           curl -LsSf https://astral.sh/uv/install.sh | sh
           uv add mkdocs-material
-          mkdocs gh-deploy --force
+          uv run mkdocs gh-deploy --force
