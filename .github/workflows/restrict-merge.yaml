@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Check target branch
         run: |
-          if [[ "${{ github.base_ref }}" == "main" && ! ("${{ github.head_ref }}" == "develop" || "${{ github.head_ref }}" == "hotfix") ]]; then
-            echo "❌ You can only merge develop or hotfix into main!"
+         if [[ "${{ github.base_ref }}" == "main" && ! ("${{ github.head_ref }}" == "develop" || "${{ github.head_ref }}" =~ ^[0-9]+-hotfix-.*$) ]]; then
+            echo "❌ You can only merge 'develop' or '##-hotfix-*' branches into 'main'!"
             exit 1
           fi
